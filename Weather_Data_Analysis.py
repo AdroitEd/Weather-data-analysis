@@ -79,18 +79,21 @@ def main():
     hquery = "SELECT city, MAX(temperature) AS Hghest_Temperature FROM weather WHERE dates GROUP BY city ORDER BY Hghest_Temperature DESC"
     htemp = pd.read_sql(hquery, connection)
     print(htemp)
+    htemp.set_index('city', inplace=True)
     htemp.plot()
     plt.show()
     
     lquery = "SELECT city, MIN(temperature) AS Lowest_Temperature FROM weather GROUP BY city ORDER BY Lowest_Temperature ASC;"
     ltemp= pd.read_sql(lquery,connection)
     print(ltemp)
+    ltemp.set_index('city', inplace=True)
     ltemp.plot()
     plt.show()
     
     wquery="SELECT city, MAX(wind_speed) AS Highest_Wind_Speed FROM weather WHERE dates GROUP BY city ORDER BY highest_wind_speed DESC;"
     windiest = pd.read_sql(wquery, connection)
     print(windiest)
+    windiest.set_index('city', inplace=True)
     windiest.plot.bar()
     plt.show()
     
