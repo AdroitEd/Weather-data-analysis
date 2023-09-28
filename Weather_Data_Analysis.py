@@ -76,7 +76,7 @@ def main():
         password="Adrion023",
         database="weather_data"
         )
-    hquery = "SELECT city, MAX(temperature) AS Hghest_Temperature FROM weather WHERE dates GROUP BY city ORDER BY Hghest_Temperature DESC"
+    hquery = "SELECT city, MAX(temperature) AS Highest_Temperature FROM weather WHERE dates GROUP BY city ORDER BY Highest_Temperature DESC"
     htemp = pd.read_sql(hquery, connection)
     print(htemp)
     htemp.set_index('city', inplace=True)
